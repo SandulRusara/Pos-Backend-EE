@@ -1,8 +1,6 @@
 package lk.ijse.posbackendee.bo;
 
-import lk.ijse.posbackendee.bo.impl.CustomerBOImpl;
-
-import javax.swing.plaf.PanelUI;
+import lk.ijse.posbackendee.bo.custom.impl.CustomerBOImpl;
 
 public class BOFactoty {
     private static BOFactoty boFactoty;

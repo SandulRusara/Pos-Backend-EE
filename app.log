@@ -1,0 +1,7 @@
+19:45:56.031 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.p.acontroller.CustomerController -- Init the customer servlet
+21:41:35.232 [http-nio-8081-exec-2] ERROR l.i.p.acontroller.CustomerController -- Failed to Save
+21:42:18.502 [http-nio-8081-exec-2] ERROR l.i.p.acontroller.CustomerController -- Failed to Save
+21:43:03.189 [http-nio-8081-exec-8] ERROR l.i.p.acontroller.CustomerController -- Failed to Save
+21:43:04.713 [http-nio-8081-exec-4] ERROR l.i.p.acontroller.CustomerController -- Failed to Save
+21:49:24.301 [http-nio-8081-exec-8] INFO  l.i.p.acontroller.CustomerController -- methanata awa bn
+21:49:28.675 [http-nio-8081-exec-19] INFO  l.i.p.acontroller.CustomerController -- methanata awa bn
