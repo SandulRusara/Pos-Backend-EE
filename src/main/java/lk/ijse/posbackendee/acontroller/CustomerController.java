@@ -18,8 +18,10 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.List;
 
 @WebServlet(urlPatterns = "/customer",loadOnStartup = 2)
 public class CustomerController extends HttpServlet {
@@ -40,6 +42,30 @@ public class CustomerController extends HttpServlet {
 //            e.printStackTrace();
 //        }
 //    }
+@Override
+protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+    try {
+        List<CustomerDto> customers = customerBO.getAllCustomer(connection);
+
+        if (!customers.isEmpty()){
+            resp.setContentType("application/json");
+            resp.setCharacterEncoding("UTF-8");
+
+            PrintWriter writer = resp.getWriter();
+            String json = jsonb.toJson(customers);
+            writer.write(json);
+
+            logger.info("Customers data send");
+            resp.setStatus(HttpServletResponse.SC_OK);
+        }else{
+            resp.setStatus(HttpServletResponse.SC_NO_CONTENT);
+        }
+    } catch (SQLException e) {
+        e.printStackTrace();
+        resp.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+    }
+
+}
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
@@ -54,6 +80,48 @@ public class CustomerController extends HttpServlet {
                 resp.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
             }
         }else {
+            logger.error("Did not contain json ContentType");
+            resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+        }
+    }
+    @Override
+    protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        if (req.getContentType() != null && req.getContentType().toLowerCase().startsWith("application/json")){
+            CustomerDto customerDTO = jsonb.fromJson(req.getReader(), CustomerDto.class);
+
+            try {
+                if (customerBO.updateCustomer(customerDTO, connection)){
+                    logger.info("Customer is Updated");
+                    resp.setStatus(HttpServletResponse.SC_OK);
+                }else{
+                    logger.error("Failed to Update");
+                    resp.setStatus(HttpServletResponse.SC_NOT_FOUND);
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+                resp.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+            }
+
+        }else {
+            logger.error("Did not contain json ContentType");
+            resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+        }
+    }
+
+    @Override
+    protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        if (req.getContentType() != null && req.getContentType().toLowerCase().startsWith("application/json")){
+            CustomerDto customerDTO = jsonb.fromJson(req.getReader(), CustomerDto.class);
+
+            if (customerBO.deleteCustomer(customerDTO.getC_id(), connection)){
+                logger.info("Customer is Deleted");
+                resp.setStatus(HttpServletResponse.SC_OK);
+            }else{
+                logger.error("Failed to Delete");
+                resp.setStatus(HttpServletResponse.SC_NOT_FOUND);
+            }
+
+        }else{
             logger.error("Did not contain json ContentType");
             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
         }
