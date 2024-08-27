@@ -122,12 +122,16 @@ protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IO
         if (req.getContentType() != null && req.getContentType().toLowerCase().startsWith("application/json")){
             CustomerDto customerDTO = jsonb.fromJson(req.getReader(), CustomerDto.class);
 
-            if (customerBO.deleteCustomer(customerDTO.getC_id(), connection)){
-                logger.info("Customer is Deleted");
-                resp.setStatus(HttpServletResponse.SC_OK);
-            }else{
-                logger.error("Failed to Delete");
-                resp.setStatus(HttpServletResponse.SC_NOT_FOUND);
+            try {
+                if (customerBO.deleteCustomer(customerDTO.getC_id(), connection)){
+                    logger.info("Customer is Deleted");
+                    resp.setStatus(HttpServletResponse.SC_OK);
+                }else{
+                    logger.error("Failed to Delete");
+                    resp.setStatus(HttpServletResponse.SC_NOT_FOUND);
+                }
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
             }
 
         }else{

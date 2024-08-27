@@ -10,6 +10,6 @@ import java.util.List;
 public interface CustomerBO extends SuperBO {
     boolean createCustomer(CustomerDto customerDto, Connection connection)throws SQLException;
     boolean updateCustomer(CustomerDto customerDto,Connection connection) throws SQLException;
-    boolean deleteCustomer(String C_id,Connection connection);
+    boolean deleteCustomer(String C_id,Connection connection)throws SQLException;
     List<CustomerDto> getAllCustomer(Connection connection)throws SQLException;
 }
