@@ -1,6 +1,7 @@
 package lk.ijse.posbackendee.bo;
 
 import lk.ijse.posbackendee.bo.custom.impl.CustomerBOImpl;
+import lk.ijse.posbackendee.bo.custom.impl.ItemBOImpl;
 
 public class BOFactoty {
     private static BOFactoty boFactoty;
@@ -16,6 +17,8 @@ public class BOFactoty {
         switch (boTypes){
             case CUSTOMER:
                 return new CustomerBOImpl();
+            case ITEM:
+                return new ItemBOImpl();
             default:
                 return null;
         }
