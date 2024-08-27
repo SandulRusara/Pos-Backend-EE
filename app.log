@@ -76,3 +76,5 @@
 14:39:19.246 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.p.acontroller.CustomerController -- Obtained new connection (javax.naming.InitialContext@1fb5aee2) to customer servlet
 14:50:41.026 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.p.acontroller.CustomerController -- Init the customer servlet
 14:50:41.627 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.p.acontroller.CustomerController -- Obtained new connection (javax.naming.InitialContext@72c8cb1e) to customer servlet
+14:58:41.286 [RMI TCP Connection(3)-127.0.0.1] INFO  l.i.p.acontroller.CustomerController -- Init the customer servlet
+14:58:41.778 [RMI TCP Connection(3)-127.0.0.1] INFO  l.i.p.acontroller.CustomerController -- Obtained new connection (javax.naming.InitialContext@419317b6) to customer servlet
