@@ -30,18 +30,18 @@ public class CustomerController extends HttpServlet {
     Jsonb jsonb=JsonbBuilder.create();
     private Connection connection;
 
-//        @Override
-//    public void init() {
-//        logger.info("Init the customer servlet");
-//        try {
-//            InitialContext context = new InitialContext();
-//            DataSource pool = (DataSource) context.lookup("java:comp/env/jdbc/pos_system");
-//            this.connection=pool.getConnection();
-//            logger.info("Obtained new connection (" + context + ") to customer servlet");
-//        } catch (NamingException | SQLException e) {
-//            e.printStackTrace();
-//        }
-//    }
+        @Override
+    public void init() {
+        logger.info("Init the customer servlet");
+        try {
+            InitialContext context = new InitialContext();
+            DataSource pool = (DataSource) context.lookup("java:comp/env/jdbc/stuRegistration");
+            this.connection=pool.getConnection();
+            logger.info("Obtained new connection (" + context + ") to customer servlet");
+        } catch (NamingException | SQLException e) {
+            e.printStackTrace();
+        }
+    }
 @Override
 protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
     try {
@@ -66,24 +66,33 @@ protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IO
     }
 
 }
-
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        if (req.getContentType() != null && req.getContentType().toLowerCase().startsWith("application/json")){
-            CustomerDto customerDTO = jsonb.fromJson(req.getReader(), CustomerDto.class);
-            System.out.println(customerDTO);
-            if(customerBO.createCustomer(customerDTO, connection)){
-                logger.info("Customer is saved");
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        if(!req.getContentType().toLowerCase().startsWith("application/json")|| req.getContentType() == null){
+            resp.sendError(HttpServletResponse.SC_BAD_REQUEST);
+        }
+        try (var writer = resp.getWriter()){
+            CustomerDto customerDto = jsonb.fromJson(req.getReader(), CustomerDto.class);
+            customerDto.setC_id("1");
+            System.out.println(customerDto);
+            if (customerBO.createCustomer(customerDto, connection)){
+                writer.write("Student saved successfully");
                 resp.setStatus(HttpServletResponse.SC_CREATED);
-            }else{
-                logger.error("Failed to Save");
-                resp.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+            }else {
+                writer.write("Save student failed");
+                resp.sendError(HttpServletResponse.SC_BAD_REQUEST);
+
             }
-        }else {
-            logger.error("Did not contain json ContentType");
-            resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+
+        } catch (JsonException e) {
+            resp.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+            throw new RuntimeException(e);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
     }
+
+
     @Override
     protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         if (req.getContentType() != null && req.getContentType().toLowerCase().startsWith("application/json")){

@@ -6,3 +6,73 @@
 21:49:24.301 [http-nio-8081-exec-8] INFO  l.i.p.acontroller.CustomerController -- methanata awa bn
 21:49:28.675 [http-nio-8081-exec-19] INFO  l.i.p.acontroller.CustomerController -- methanata awa bn
 22:11:55.483 [http-nio-8081-exec-2] ERROR l.i.p.acontroller.CustomerController -- Failed to Save
+10:20:48.058 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.p.acontroller.CustomerController -- Init the customer servlet
+10:20:48.714 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.p.acontroller.CustomerController -- Obtained new connection (javax.naming.InitialContext@16ac5615) to customer servlet
+10:25:25.459 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.p.acontroller.CustomerController -- Init the customer servlet
+10:25:25.954 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.p.acontroller.CustomerController -- Obtained new connection (javax.naming.InitialContext@742e3c09) to customer servlet
+10:29:03.709 [RMI TCP Connection(3)-127.0.0.1] INFO  l.i.p.acontroller.CustomerController -- Init the customer servlet
+10:29:04.195 [RMI TCP Connection(3)-127.0.0.1] INFO  l.i.p.acontroller.CustomerController -- Obtained new connection (javax.naming.InitialContext@4bb0f3a6) to customer servlet
+10:29:19.995 [http-nio-8081-exec-1] INFO  l.i.posbackendee.filter.CORSFilter -- Allow access to http://localhost:63342 origin
+10:29:38.088 [http-nio-8081-exec-2] INFO  l.i.posbackendee.filter.CORSFilter -- Allow access to http://localhost:63342 origin
+10:29:38.093 [http-nio-8081-exec-3] INFO  l.i.posbackendee.filter.CORSFilter -- Allow access to http://localhost:63342 origin
+11:12:44.067 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.p.acontroller.CustomerController -- Init the customer servlet
+11:12:44.692 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.p.acontroller.CustomerController -- Obtained new connection (javax.naming.InitialContext@4064c601) to customer servlet
+11:12:50.897 [http-nio-8081-exec-2] INFO  l.i.posbackendee.filter.CORSFilter -- Allow access to http://localhost:63342 origin
+11:12:50.905 [http-nio-8081-exec-2] INFO  l.i.posbackendee.filter.CORSFilter -- Allow access to http://localhost:63342 origin
+11:14:20.608 [RMI TCP Connection(3)-127.0.0.1] INFO  l.i.p.acontroller.CustomerController -- Init the customer servlet
+11:14:21.085 [RMI TCP Connection(3)-127.0.0.1] INFO  l.i.p.acontroller.CustomerController -- Obtained new connection (javax.naming.InitialContext@7c936f2d) to customer servlet
+11:21:04.947 [RMI TCP Connection(6)-127.0.0.1] INFO  l.i.p.acontroller.CustomerController -- Init the customer servlet
+11:21:05.213 [RMI TCP Connection(6)-127.0.0.1] INFO  l.i.p.acontroller.CustomerController -- Obtained new connection (javax.naming.InitialContext@2f7c61b8) to customer servlet
+11:22:04.588 [RMI TCP Connection(9)-127.0.0.1] INFO  l.i.p.acontroller.CustomerController -- Init the customer servlet
+11:22:04.816 [RMI TCP Connection(9)-127.0.0.1] INFO  l.i.p.acontroller.CustomerController -- Obtained new connection (javax.naming.InitialContext@6ec81322) to customer servlet
+11:33:50.929 [RMI TCP Connection(12)-127.0.0.1] INFO  l.i.p.acontroller.CustomerController -- Init the customer servlet
+11:33:51.155 [RMI TCP Connection(12)-127.0.0.1] INFO  l.i.p.acontroller.CustomerController -- Obtained new connection (javax.naming.InitialContext@6819c93e) to customer servlet
+11:34:24.181 [http-nio-8081-exec-19] INFO  l.i.p.acontroller.CustomerController -- hello hello
+11:38:53.700 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.p.acontroller.CustomerController -- Init the customer servlet
+11:38:54.317 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.p.acontroller.CustomerController -- Obtained new connection (javax.naming.InitialContext@72c8cb1e) to customer servlet
+11:39:05.312 [http-nio-8081-exec-2] INFO  l.i.p.acontroller.CustomerController -- hello hello
+11:43:11.705 [RMI TCP Connection(5)-127.0.0.1] INFO  l.i.p.acontroller.CustomerController -- Init the customer servlet
+11:43:11.994 [RMI TCP Connection(5)-127.0.0.1] INFO  l.i.p.acontroller.CustomerController -- Obtained new connection (javax.naming.InitialContext@4e8a7b97) to customer servlet
+11:43:19.491 [http-nio-8081-exec-8] INFO  l.i.p.acontroller.CustomerController -- hello hello
+11:48:10.474 [RMI TCP Connection(3)-127.0.0.1] INFO  l.i.p.acontroller.CustomerController -- Init the customer servlet
+11:48:10.963 [RMI TCP Connection(3)-127.0.0.1] INFO  l.i.p.acontroller.CustomerController -- Obtained new connection (javax.naming.InitialContext@f84036d) to customer servlet
+11:48:17.082 [http-nio-8081-exec-1] DEBUG l.i.p.acontroller.CustomerController -- ffff
+11:56:54.724 [RMI TCP Connection(6)-127.0.0.1] INFO  l.i.p.acontroller.CustomerController -- Init the customer servlet
+11:56:54.982 [RMI TCP Connection(6)-127.0.0.1] INFO  l.i.p.acontroller.CustomerController -- Obtained new connection (javax.naming.InitialContext@43e70601) to customer servlet
+11:57:32.219 [RMI TCP Connection(5)-127.0.0.1] INFO  l.i.p.acontroller.CustomerController -- Init the customer servlet
+11:57:32.693 [RMI TCP Connection(5)-127.0.0.1] INFO  l.i.p.acontroller.CustomerController -- Obtained new connection (javax.naming.InitialContext@5c569cd7) to customer servlet
+11:57:49.551 [RMI TCP Connection(4)-127.0.0.1] INFO  l.i.p.acontroller.CustomerController -- Init the customer servlet
+11:57:50.020 [RMI TCP Connection(4)-127.0.0.1] INFO  l.i.p.acontroller.CustomerController -- Obtained new connection (javax.naming.InitialContext@4239f0a) to customer servlet
+12:11:32.064 [http-nio-8081-exec-2] INFO  l.i.p.acontroller.CustomerController -- dto ready
+12:12:52.102 [http-nio-8081-exec-9] INFO  l.i.p.acontroller.CustomerController -- dto ready
+12:13:35.110 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.p.acontroller.CustomerController -- Init the customer servlet
+12:13:35.815 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.p.acontroller.CustomerController -- Obtained new connection (javax.naming.InitialContext@72c8cb1e) to customer servlet
+12:13:43.535 [http-nio-8081-exec-1] INFO  l.i.p.acontroller.CustomerController -- dto ready
+12:17:56.534 [RMI TCP Connection(5)-127.0.0.1] INFO  l.i.p.acontroller.CustomerController -- Init the customer servlet
+12:17:57.021 [RMI TCP Connection(5)-127.0.0.1] INFO  l.i.p.acontroller.CustomerController -- Obtained new connection (javax.naming.InitialContext@173269a6) to customer servlet
+12:18:32.597 [http-nio-8081-exec-3] INFO  l.i.p.acontroller.CustomerController -- dto ready
+12:19:03.386 [http-nio-8081-exec-5] INFO  l.i.p.acontroller.CustomerController -- dto ready
+12:19:22.812 [RMI TCP Connection(9)-127.0.0.1] INFO  l.i.p.acontroller.CustomerController -- Init the customer servlet
+12:19:23.061 [RMI TCP Connection(9)-127.0.0.1] INFO  l.i.p.acontroller.CustomerController -- Obtained new connection (javax.naming.InitialContext@6bb2c40c) to customer servlet
+12:19:33.351 [http-nio-8081-exec-6] INFO  l.i.p.acontroller.CustomerController -- dto ready
+12:30:09.092 [http-nio-8081-exec-14] INFO  l.i.p.acontroller.CustomerController -- dto ready
+12:37:35.873 [http-nio-8081-exec-20] INFO  l.i.p.acontroller.CustomerController -- dto ready
+12:52:42.885 [http-nio-8081-exec-15] INFO  l.i.p.acontroller.CustomerController -- dto ready
+12:56:39.496 [RMI TCP Connection(13)-127.0.0.1] INFO  l.i.p.acontroller.CustomerController -- Init the customer servlet
+12:56:39.734 [RMI TCP Connection(13)-127.0.0.1] INFO  l.i.p.acontroller.CustomerController -- Obtained new connection (javax.naming.InitialContext@25475811) to customer servlet
+13:10:15.485 [RMI TCP Connection(4)-127.0.0.1] INFO  l.i.p.acontroller.CustomerController -- Init the customer servlet
+13:10:16.134 [RMI TCP Connection(4)-127.0.0.1] INFO  l.i.p.acontroller.CustomerController -- Obtained new connection (javax.naming.InitialContext@499f4525) to customer servlet
+13:10:25.816 [http-nio-8081-exec-1] INFO  l.i.p.acontroller.CustomerController -- dto ready
+13:43:01.537 [http-nio-8081-exec-6] INFO  l.i.p.acontroller.CustomerController -- dto ready
+13:57:36.303 [RMI TCP Connection(5)-127.0.0.1] INFO  l.i.p.acontroller.CustomerController -- Init the customer servlet
+13:57:36.796 [RMI TCP Connection(5)-127.0.0.1] INFO  l.i.p.acontroller.CustomerController -- Obtained new connection (javax.naming.InitialContext@5f2d2c8d) to customer servlet
+13:57:51.443 [RMI TCP Connection(8)-127.0.0.1] INFO  l.i.p.acontroller.CustomerController -- Init the customer servlet
+13:57:51.711 [RMI TCP Connection(8)-127.0.0.1] INFO  l.i.p.acontroller.CustomerController -- Obtained new connection (javax.naming.InitialContext@5b1e4fd8) to customer servlet
+13:59:26.701 [RMI TCP Connection(4)-127.0.0.1] INFO  l.i.p.acontroller.CustomerController -- Init the customer servlet
+13:59:27.188 [RMI TCP Connection(4)-127.0.0.1] INFO  l.i.p.acontroller.CustomerController -- Obtained new connection (javax.naming.InitialContext@28efffba) to customer servlet
+14:34:00.049 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.p.acontroller.CustomerController -- Init the customer servlet
+14:34:00.653 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.p.acontroller.CustomerController -- Obtained new connection (javax.naming.InitialContext@72c8cb1e) to customer servlet
+14:39:18.754 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.p.acontroller.CustomerController -- Init the customer servlet
+14:39:19.246 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.p.acontroller.CustomerController -- Obtained new connection (javax.naming.InitialContext@1fb5aee2) to customer servlet
+14:50:41.026 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.p.acontroller.CustomerController -- Init the customer servlet
+14:50:41.627 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.p.acontroller.CustomerController -- Obtained new connection (javax.naming.InitialContext@72c8cb1e) to customer servlet

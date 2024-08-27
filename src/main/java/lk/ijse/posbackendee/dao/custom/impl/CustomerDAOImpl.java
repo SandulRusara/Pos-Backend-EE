@@ -32,14 +32,18 @@ public class CustomerDAOImpl implements CustomerDAO {
     }
 
     @Override
-    public boolean save(Connection connection, Customer dto) throws SQLException {
-        return SQLUtil.execute(connection,
-                SAVE_QUERY,
-                dto.getC_id(),
-                dto.getName(),
-                dto.getAddress(),
-                dto.getContact()
-        );
+    public boolean save(Connection connection, Customer customer) throws SQLException {
+        try {
+            var ps = connection.prepareStatement(SAVE_QUERY);
+            ps.setString(1, customer.getC_id());
+            ps.setString(2, customer.getName());
+            ps.setString(3, customer.getAddress());
+            ps.setInt(4, customer.getContact());
+
+            return ps.executeUpdate() != 0;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+}
     }
 
     @Override
