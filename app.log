@@ -102,3 +102,9 @@
 22:13:50.451 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.p.acontroller.CustomerController -- Obtained new connection (javax.naming.InitialContext@6929b991) to customer servlet
 22:13:50.472 [RMI TCP Connection(2)-127.0.0.1] INFO  l.ijse.posbackendee.acontroller.Item -- Init the item servlet
 22:13:50.492 [RMI TCP Connection(2)-127.0.0.1] INFO  l.ijse.posbackendee.acontroller.Item -- Obtained new connection (918583370, URL=jdbc:mysql://localhost:3306/Shopdb, MySQL Connector/J) to item servlet
+10:51:23.882 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.p.acontroller.CustomerController -- Init the customer servlet
+10:51:24.627 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.p.acontroller.CustomerController -- Obtained new connection (javax.naming.InitialContext@b256bcb) to customer servlet
+10:51:24.661 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.p.acontroller.ItemController -- Init the item servlet
+10:51:24.682 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.p.acontroller.ItemController -- Obtained new connection (549141390, URL=jdbc:mysql://localhost:3306/Shopdb, MySQL Connector/J) to item servlet
+10:51:24.689 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.posbackendee.acontroller.Order -- Init the Order servlet
+10:51:24.706 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.posbackendee.acontroller.Order -- Obtained new connection (1454758517, URL=jdbc:mysql://localhost:3306/Shopdb, MySQL Connector/J) to order servlet

@@ -99,7 +99,7 @@ protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IO
             CustomerDto customerDTO = jsonb.fromJson(req.getReader(), CustomerDto.class);
 
             try {
-                if (customerBO.updateCustomer(customerDTO, connection)){
+                if (customerBO.updateCustomer(customerDTO.getC_id(),customerDTO, connection)){
                     logger.info("Customer is Updated");
                     resp.setStatus(HttpServletResponse.SC_OK);
                 }else{

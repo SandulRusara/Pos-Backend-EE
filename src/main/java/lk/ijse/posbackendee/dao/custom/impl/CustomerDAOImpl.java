@@ -48,14 +48,24 @@ public class CustomerDAOImpl implements CustomerDAO {
 
     @Override
     public boolean update(Connection connection, Customer dto) throws SQLException {
-        return SQLUtil.execute(connection,
-                UPDATE_QUERY,
-                dto.getName(),
-                dto.getAddress(),
-                dto.getContact(),
-                dto.getC_id()
-        );
+        return false;
     }
+
+    @Override
+    public boolean update(String customerId,Connection connection, Customer customer)  {
+        try {
+            var ps = connection.prepareStatement(UPDATE_QUERY);
+            ps.setString(1, customer.getName());
+            ps.setString(2, customer.getAddress());
+            ps.setInt(3, Integer.parseInt(String.valueOf(customer.getContact())));
+            ps.setString(4,  customerId);
+            return ps.executeUpdate() != 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException("Error updating customer with ID: " + customerId, e);
+        }
+    }
+
 
     @Override
     public boolean delete(Connection connection, String s) throws SQLException {
