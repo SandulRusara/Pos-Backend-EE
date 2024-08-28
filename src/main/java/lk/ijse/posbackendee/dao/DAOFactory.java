@@ -3,6 +3,7 @@ package lk.ijse.posbackendee.dao;
 import lk.ijse.posbackendee.dao.custom.impl.CustomerDAOImpl;
 import lk.ijse.posbackendee.dao.custom.impl.ItemDAOImpl;
 import lk.ijse.posbackendee.dao.custom.impl.OrderDAOImpl;
+import lk.ijse.posbackendee.dao.custom.impl.OrderDetailsDAOImpl;
 
 public class DAOFactory {
 
@@ -26,6 +27,8 @@ public class DAOFactory {
                 return new ItemDAOImpl();
             case ORDER:
                 return new OrderDAOImpl();
+            case ORDER_DETAILS:
+                return new OrderDetailsDAOImpl();
             default:
                 return null;
         }
