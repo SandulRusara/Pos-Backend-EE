@@ -7,12 +7,15 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import lk.ijse.posback.bo.BOFactory;
-import lk.ijse.posback.bo.custom.ItemBO;
-import lk.ijse.posback.dto.ItemDTO;
+import lk.ijse.posbackendee.bo.BOFactoty;
+import lk.ijse.posbackendee.bo.custom.ItemBO;
+import lk.ijse.posbackendee.dto.ItemDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.sql.DataSource;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -20,29 +23,26 @@ import java.sql.SQLException;
 import java.util.List;
 
 @WebServlet(name = "item", urlPatterns = "/item", loadOnStartup = 5)
-public class Item extends HttpServlet {
+public class ItemController extends HttpServlet {
 
-    Logger logger = LoggerFactory.getLogger(Item.class);
-    ItemBO itemBO = (ItemBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.ITEM);
+    Logger logger = LoggerFactory.getLogger(ItemController.class);
+    ItemBO itemBO = (ItemBO) BOFactoty.getBoFactoty().getBO(BOFactoty.BOTypes.ITEM);
     private Connection connection;
     Jsonb jsonb = JsonbBuilder.create();
 
-//    @Override
-//    public void init() throws ServletException {
-//        logger.info("Init the item servlet");
-//
-//        try {
-//
-//            InitialContext context = new InitialContext();
-//            DataSource pool = (DataSource) context.lookup("java:comp/env/jdbc/pos_system");
-//            this.connection = pool.getConnection();
-//            logger.info("Obtained new connection (" + connection + ") to item servlet");
-//
-//        } catch (NamingException | SQLException e) {
-//            e.printStackTrace();
-//        }
-//
-//    }
+    @Override
+    public void init() throws ServletException {
+        logger.info("Init the item servlet");
+        try {
+            InitialContext context = new InitialContext();
+            DataSource pool = (DataSource) context.lookup("java:comp/env/jdbc/stuRegistration");
+            this.connection = pool.getConnection();
+            logger.info("Obtained new connection (" + connection + ") to item servlet");
+        } catch (NamingException | SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

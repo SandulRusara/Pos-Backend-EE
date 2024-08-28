@@ -7,12 +7,15 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import lk.ijse.posback.bo.BOFactory;
-import lk.ijse.posback.bo.custom.OrderBO;
-import lk.ijse.posback.dto.OrderDTO;
+import lk.ijse.posbackendee.bo.BOFactoty;
+import lk.ijse.posbackendee.bo.custom.OrderBO;
+import lk.ijse.posbackendee.dto.OrderDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.sql.DataSource;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -23,26 +26,26 @@ import java.util.List;
 public class Order extends HttpServlet {
 
     Logger logger = LoggerFactory.getLogger(Order.class);
-    OrderBO orderBO = (OrderBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.ORDER);
+    OrderBO orderBO = (OrderBO) BOFactoty.getBoFactoty().getBO(BOFactoty.BOTypes.ORDER);
     private Connection connection;
     Jsonb jsonb = JsonbBuilder.create();
 
-//    @Override
-//    public void init() throws ServletException {
-//        logger.info("Init the Order servlet");
-//
-//        try {
-//
-//            InitialContext context = new InitialContext();
-//            DataSource pool = (DataSource) context.lookup("java:comp/env/jdbc/pos_system");
-//            this.connection = pool.getConnection();
-//            logger.info("Obtained new connection (" + connection + ") to order servlet");
-//
-//        } catch (NamingException | SQLException e) {
-//            e.printStackTrace();
-//        }
-//
-//    }
+    @Override
+    public void init() throws ServletException {
+        logger.info("Init the Order servlet");
+
+        try {
+
+            InitialContext context = new InitialContext();
+            DataSource pool = (DataSource) context.lookup("java:comp/env/jdbc/stuRegistration");
+            this.connection = pool.getConnection();
+            logger.info("Obtained new connection (" + connection + ") to order servlet");
+
+        } catch (NamingException | SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

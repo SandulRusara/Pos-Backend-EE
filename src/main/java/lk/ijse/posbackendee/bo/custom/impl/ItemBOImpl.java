@@ -1,10 +1,10 @@
 package lk.ijse.posbackendee.bo.custom.impl;
 
-import lk.ijse.posback.bo.custom.ItemBO;
-import lk.ijse.posback.dao.DAOFactory;
-import lk.ijse.posback.dao.custom.ItemDAO;
-import lk.ijse.posback.dto.ItemDTO;
-import lk.ijse.posback.entity.Item;
+import lk.ijse.posbackendee.bo.custom.ItemBO;
+import lk.ijse.posbackendee.dao.DAOFactory;
+import lk.ijse.posbackendee.dao.custom.ItemDAO;
+import lk.ijse.posbackendee.dto.ItemDTO;
+import lk.ijse.posbackendee.entity.Item;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -17,7 +17,7 @@ public class ItemBOImpl implements ItemBO {
 
     @Override
     public boolean createItem(ItemDTO itemDTO, Connection connection) throws SQLException {
-        return itemDAO.save(connection, new Item(
+        return itemDAO.save(connection,new Item(
                 itemDTO.getItemId(),
                 itemDTO.getDescription(),
                 itemDTO.getUnitPrice(),

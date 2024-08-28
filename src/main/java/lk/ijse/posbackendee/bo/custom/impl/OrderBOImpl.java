@@ -1,10 +1,11 @@
 package lk.ijse.posbackendee.bo.custom.impl;
 
-import lk.ijse.posback.bo.custom.OrderBO;
-import lk.ijse.posback.dao.DAOFactory;
-import lk.ijse.posback.dao.custom.OrderDAO;
-import lk.ijse.posback.dto.OrderDTO;
-import lk.ijse.posback.entity.Order;
+
+import lk.ijse.posbackendee.acontroller.Order;
+import lk.ijse.posbackendee.bo.custom.OrderBO;
+import lk.ijse.posbackendee.dao.DAOFactory;
+import lk.ijse.posbackendee.dao.custom.OrderDAO;
+import lk.ijse.posbackendee.dto.OrderDTO;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -22,21 +23,21 @@ public class OrderBOImpl implements OrderBO {
                 orderDTO.getDate(),
                 orderDTO.getDiscount(),
                 orderDTO.getTotal(),
-                orderDTO.getCustomerId()
+                orderDTO.getC_id()
         ));
     }
 
     @Override
     public List<OrderDTO> getAllOrder(Connection connection) throws SQLException {
-        List<Order> orders = orderDAO.getAll(connection);
+        List<lk.ijse.posbackendee.entity.Order> orders = orderDAO.getAll(connection);
         List<OrderDTO> orderDTOS = new ArrayList<>();
-        for (Order order : orders) {
+        for (lk.ijse.posbackendee.entity.Order order : orders) {
             orderDTOS.add(new OrderDTO(
                     order.getOrderId(),
                     order.getDate(),
                     order.getDiscount(),
                     order.getTotal(),
-                    order.getCustomerId()
+                    order.getC_id()
             ));
         }
         return  orderDTOS;

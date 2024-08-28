@@ -2,6 +2,7 @@ package lk.ijse.posbackendee.bo;
 
 import lk.ijse.posbackendee.bo.custom.impl.CustomerBOImpl;
 import lk.ijse.posbackendee.bo.custom.impl.ItemBOImpl;
+import lk.ijse.posbackendee.bo.custom.impl.OrderBOImpl;
 
 public class BOFactoty {
     private static BOFactoty boFactoty;
@@ -19,6 +20,8 @@ public class BOFactoty {
                 return new CustomerBOImpl();
             case ITEM:
                 return new ItemBOImpl();
+            case ORDER:
+                return new OrderBOImpl();
             default:
                 return null;
         }

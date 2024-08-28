@@ -1,7 +1,6 @@
 package lk.ijse.posbackendee.dao.custom;
-
-import lk.ijse.posback.dao.CrudDAO;
-import lk.ijse.posback.entity.Item;
+import lk.ijse.posbackendee.dao.CrudDAO;
+import lk.ijse.posbackendee.entity.Item;
 
 import java.sql.Connection;
 import java.sql.SQLException;
