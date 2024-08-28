@@ -1,4 +1,4 @@
-JavaEE (POS) - Point Of Sale
+# **JavaEE (POS) - Point Of Sale**
 
 This JavaEE-based Point of Sale (POS) System API provides a simple and efficient way to manage customers, items, orders, and order details. It is designed for ease of use in building POS applications.
 
