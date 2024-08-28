@@ -68,7 +68,13 @@ public class CustomerDAOImpl implements CustomerDAO {
 
 
     @Override
-    public boolean delete(Connection connection, String s) throws SQLException {
-        return SQLUtil.execute(connection, DELETE_QUERY,s);
+    public boolean delete(Connection connection, String c_id) throws SQLException {
+        try {
+            var ps = connection.prepareStatement(DELETE_QUERY);
+            ps.setString(1, c_id);
+            return ps.executeUpdate() != 0;
+        } catch (SQLException e) {
+            throw new RuntimeException();
+        }
     }
 }

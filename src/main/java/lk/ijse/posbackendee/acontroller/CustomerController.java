@@ -121,6 +121,7 @@ protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IO
     protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         if (req.getContentType() != null && req.getContentType().toLowerCase().startsWith("application/json")){
             CustomerDto customerDTO = jsonb.fromJson(req.getReader(), CustomerDto.class);
+            System.out.println(customerDTO);
 
             try {
                 if (customerBO.deleteCustomer(customerDTO.getC_id(), connection)){
