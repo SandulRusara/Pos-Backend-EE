@@ -1,5 +1,6 @@
 package lk.ijse.posbackendee.acontroller;
 
+import jakarta.json.JsonException;
 import jakarta.json.bind.Jsonb;
 import jakarta.json.bind.JsonbBuilder;
 import jakarta.servlet.ServletException;
@@ -67,34 +68,37 @@ public class ItemController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        if (req.getContentType() != null && req.getContentType().toLowerCase().startsWith("application/json")){
+        if(!req.getContentType().toLowerCase().startsWith("application/json")|| req.getContentType() == null){
+            resp.sendError(HttpServletResponse.SC_BAD_REQUEST);
+        }
+        try (var writer = resp.getWriter()){
             ItemDTO itemDTO = jsonb.fromJson(req.getReader(), ItemDTO.class);
+            /*customerDto.setC_id("2");*/
+            System.out.println(itemDTO);
+            if (itemBO.createItem(itemDTO, connection)){
+                writer.write("Item saved successfully");
+                resp.setStatus(HttpServletResponse.SC_CREATED);
+            }else {
+                writer.write("Save item failed");
+                resp.sendError(HttpServletResponse.SC_BAD_REQUEST);
 
-            try {
-                if (itemBO.createItem(itemDTO, connection)){
-                    logger.info("Item is Saved");
-                    resp.setStatus(HttpServletResponse.SC_OK);
-                }else {
-                    logger.info("Failed to save");
-                    resp.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-                }
-            } catch (SQLException e) {
-                e.printStackTrace();
-                resp.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
             }
-        }else{
-            logger.error("Did not contain json ContentType");
-            resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+
+        } catch (JsonException e) {
+            resp.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+            throw new RuntimeException(e);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
     }
 
     @Override
-    protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         if (req.getContentType() != null && req.getContentType().toLowerCase().startsWith("application/json")){
             ItemDTO itemDTO = jsonb.fromJson(req.getReader(), ItemDTO.class);
 
             try {
-                if (itemBO.updateItem(itemDTO, connection)){
+                if (itemBO.updateItem(itemDTO.getItemId(),itemDTO, connection)){
                     logger.info("Item is Updated");
                     resp.setStatus(HttpServletResponse.SC_OK);
                 }else{
@@ -111,11 +115,11 @@ public class ItemController extends HttpServlet {
             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
         }
     }
-
     @Override
-    protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         if (req.getContentType() != null && req.getContentType().toLowerCase().startsWith("application/json")){
             ItemDTO itemDTO = jsonb.fromJson(req.getReader(), ItemDTO.class);
+            System.out.println(itemDTO);
 
             try {
                 if (itemBO.deleteItem(itemDTO.getItemId(), connection)){
@@ -126,11 +130,10 @@ public class ItemController extends HttpServlet {
                     resp.setStatus(HttpServletResponse.SC_NOT_FOUND);
                 }
             } catch (SQLException e) {
-                e.printStackTrace();
-                resp.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+                throw new RuntimeException(e);
             }
 
-        }else {
+        }else{
             logger.error("Did not contain json ContentType");
             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
         }

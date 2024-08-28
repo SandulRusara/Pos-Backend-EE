@@ -12,9 +12,9 @@ import java.util.List;
 public class ItemDAOImpl implements ItemDAO {
 
     private static final String GET_QUERY = "SELECT * FROM item";
-    private static final String SAVE_QUERY = "INSERT INTO item(item_id, description, unit_price, qty) VALUES (?, ?, ?, ?)";
-    private static final String UPDATE_QUERY = "UPDATE item SET description = ?, unit_price = ?, qty = ? WHERE item_id = ?";
-    private static final String DELETE_QUERY = "DELETE FROM item WHERE item_id = ?";
+    private static final String SAVE_QUERY = "INSERT INTO item(itemId, description, unitPrice, qty) VALUES (?, ?, ?, ?)";
+    private static final String UPDATE_QUERY = "UPDATE item SET description = ?, unitPrice = ?, qty = ? WHERE itemId = ?";
+    private static final String DELETE_QUERY = "DELETE FROM item WHERE itemId = ?";
     private static final String SELECT_QUERY = "SELECT * FROM item WHERE item_id = ?";
 
     @Override
@@ -34,18 +34,41 @@ public class ItemDAOImpl implements ItemDAO {
     }
 
     @Override
-    public boolean save(Connection connection, Item dto) throws SQLException {
-        return SQLUtil.execute(connection,
-                SAVE_QUERY,
-                dto.getItemId(),
-                dto.getDescription(),
-                dto.getUnitPrice(),
-                dto.getQty()
-        );
+    public Item get(Connection connection, String itemId) throws SQLException {
+        return null;
     }
 
     @Override
-    public boolean update(Connection connection, Item dto) throws SQLException {
+    public boolean update(String itemId, Connection connection, Item item) throws SQLException {
+        try {
+            var ps = connection.prepareStatement(UPDATE_QUERY);
+            ps.setString(1, item.getDescription());
+            ps.setString(2, String.valueOf(item.getUnitPrice()));
+            ps.setInt(3, Integer.parseInt(String.valueOf(item.getQty())));
+            ps.setString(4,  itemId);
+            return ps.executeUpdate() != 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException("Error updating customer with ID: " + itemId, e);
+        }
+    }
+
+    @Override
+    public boolean save(Connection connection, Item item) {
+        try {
+            var ps = connection.prepareStatement(SAVE_QUERY);
+            ps.setString(1, item.getItemId());
+            ps.setString(2, item.getDescription());
+            ps.setString(3, String.valueOf(item.getUnitPrice()));
+            ps.setInt(4, item.getQty());
+
+            return ps.executeUpdate() != 0;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+    /*@Override
+    public boolean update(String itemId, Connection connection, Item dto) throws SQLException {
         return SQLUtil.execute(connection,
                 UPDATE_QUERY,
                 dto.getDescription(),
@@ -73,6 +96,24 @@ public class ItemDAOImpl implements ItemDAO {
             );
         }
         return null;
+    }
+    }*/
+    }
+
+    @Override
+    public boolean update(Connection connection, Item dto) throws SQLException {
+        return false;
+    }
+
+    @Override
+    public boolean delete(Connection connection, String itemId) throws SQLException {
+        try {
+            var ps = connection.prepareStatement(DELETE_QUERY);
+            ps.setString(1, itemId);
+            return ps.executeUpdate() != 0;
+        } catch (SQLException e) {
+            throw new RuntimeException();
+        }
     }
 }
 

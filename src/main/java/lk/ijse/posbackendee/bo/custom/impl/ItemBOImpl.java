@@ -26,9 +26,9 @@ public class ItemBOImpl implements ItemBO {
     }
 
     @Override
-    public boolean updateItem(ItemDTO itemDTO, Connection connection) throws SQLException {
-        return itemDAO.update(connection, new Item(
-                itemDTO.getItemId(),
+    public boolean updateItem(String itemId,ItemDTO itemDTO, Connection connection) throws SQLException {
+        return itemDAO.update(itemId,connection, new Item(
+
                 itemDTO.getDescription(),
                 itemDTO.getUnitPrice(),
                 itemDTO.getQty()
