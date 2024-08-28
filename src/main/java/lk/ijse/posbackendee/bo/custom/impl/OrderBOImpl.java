@@ -1,11 +1,12 @@
 package lk.ijse.posbackendee.bo.custom.impl;
 
 
-import lk.ijse.posbackendee.acontroller.Order;
 import lk.ijse.posbackendee.bo.custom.OrderBO;
 import lk.ijse.posbackendee.dao.DAOFactory;
 import lk.ijse.posbackendee.dao.custom.OrderDAO;
 import lk.ijse.posbackendee.dto.OrderDTO;
+import lk.ijse.posbackendee.dto.OrderDetailsDTO;
+import lk.ijse.posbackendee.entity.Order;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -17,7 +18,7 @@ public class OrderBOImpl implements OrderBO {
     OrderDAO orderDAO = (OrderDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.ORDER);
 
     @Override
-    public boolean saveOrder(OrderDTO orderDTO, Connection connection) throws SQLException {
+    public boolean saveOrder(OrderDTO orderDTO,Connection connection) throws SQLException {
         return orderDAO.save(connection, new Order(
                 orderDTO.getOrderId(),
                 orderDTO.getDate(),

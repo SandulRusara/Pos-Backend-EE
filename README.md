@@ -24,6 +24,4 @@ This JavaEE-based Point of Sale (POS) System API provides a simple and efficient
 
  5-Use the Frontend.
 
-Frontend :-
- GitHub repo - 
         
